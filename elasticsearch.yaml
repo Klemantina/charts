@@ -1,7 +1,7 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: hello-world
+  name: elasticsearch
   namespace: dev
   annotations:
     flux.weave.works/automated: "true"
@@ -12,5 +12,5 @@ spec:
     path: stable/elasticsearch
     ref: master
   valuesFrom:
-    chartFileRef: values.yaml
-    optional: false
+  -  chartFileRef: values.yaml
+     optional: false
