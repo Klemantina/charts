@@ -11,7 +11,19 @@ spec:
     git: ssh://git@github.com:Klemantina/charts.git
     path: stable/elasticsearch
     ref: master
-  valuesFrom:
-  - chartFileRef:
-      path: ./values.yaml
-      optional: false
+  values:
+    image:
+      repository: docker.elastic.co/elasticsearch/elasticsearch-oss
+      tag: "6.4.0"
+      pullPolicy: IfNotPresent
+    master:
+      persistence:
+        storageClass: dev-es-master-persistence
+    data:
+      replicas: 3
+      persistence:
+        storageClass: dev-es-data-persistence
+    client:
+      replicas: 1
+      serviceType: NodePort
+      nodePort: 30200
