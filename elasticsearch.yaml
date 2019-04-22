@@ -1,0 +1,16 @@
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: hello-world
+  namespace: dev
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: dev-elasticsearch
+  chart:
+    git: ssh://git@github.com:Klemantina/charts.git
+    path: stable/elasticsearch
+    ref: master
+  valuesFrom:
+    chartFileRef: values.yaml
+    optional: false
