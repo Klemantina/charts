@@ -12,19 +12,3 @@ spec:
     git: ssh://git@github.com:Klemantina/charts.git
     path: stable/elasticsearch
     ref: master
-  values:
-    image:
-      repository: docker.elastic.co/elasticsearch/elasticsearch-oss
-      tag: "7.1.0-SNAPSHOT"
-      pullPolicy: IfNotPresent
-    master:
-      persistence:
-        storageClass: dev-es-master-persistence
-    data:
-      replicas: 3
-      persistence:
-        storageClass: dev-es-data-persistence
-    client:
-      replicas: 1
-      serviceType: NodePort
-      nodePort: 30200
