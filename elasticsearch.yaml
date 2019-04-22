@@ -12,5 +12,6 @@ spec:
     path: stable/elasticsearch
     ref: master
   valuesFrom:
-  -  chartFileRef: values.yaml
-     optional: false
+  - chartFileRef:
+      path: values.yaml
+      optional: false
